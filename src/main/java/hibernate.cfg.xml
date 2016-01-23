@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- Database connection properties - Driver, URL, user, password -->
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost/hibernateannotation</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password"></property>
+		
+		<!-- Connection Pool Size -->
+		<property name="hibernate.connection.pool_size">1</property>
+		
+		<property name="hibernate.current_session_context_class">thread</property> 
+		
+		
+		<property name="cache_use_second_level_cache">true</property>
+		<!-- <property name="hibernate.cache.provider_class">org.hibernate.cache.ECacheProvider</property>
+		<property name="hibernate.cache.region.factory_class">net.sf.ehcache.hibernate.EhCacheRegionFactory</property> -->
+		
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+         
+        <!-- For singleton factory -->
+        <!-- <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</property>
+         -->
+          
+         <!-- enable second level cache and query cache -->
+         <property name="hibernate.cache.use_second_level_cache">true</property>
+         <property name="hibernate.cache.use_query_cache">true</property>
+         <property name="net.sf.ehcache.configurationResourceName">/ehcache.xml</property>
+		
+		<!-- Disable second level cache -->
+		<!-- <property name="hibernate.cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property> -->
+		
+		<!-- show all sql queries on console -->
+		<property name="hibernate.show_sql">true</property>
+		
+		<!-- sql dialect -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> 
+		
+		<!-- Drop or re-create database schema on startup -->
+		<property name="hbm2ddl.auto">create</property>
+		
+		<!-- mapping file --> 
+		<mapping class="com.acadgild.tml.hibernate.onetoone.EmployeeDetail"/>
+    	<mapping class="com.acadgild.tml.hibernate.onetoone.Employee"/>
+          
+    	<mapping class="com.acadgild.tml.hibernate.onetomany.Cart"/>
+    	<mapping class="com.acadgild.tml.hibernate.onetomany.Item"/>
+    	
+    	<mapping class="com.acadgild.tml.hibernate.manytomany.CartMN"/>
+    	<mapping class="com.acadgild.tml.hibernate.manytomany.ItemMN"/>
+    	
+    	<mapping class="com.acadgild.tml.hibernate.inheritance.Vehicle"/>
+    	<mapping class="com.acadgild.tml.hibernate.inheritance.TwoWheeler"/>
+    	<mapping class="com.acadgild.tml.hibernate.inheritance.FourWheeler"/>
+    	
+    	
+    	
+		
+	</session-factory>
+</hibernate-configuration>
